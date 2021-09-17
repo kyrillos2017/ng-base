@@ -15,7 +15,7 @@
   <h3 align="center">Allam Architecture</h3>
 
   <p align="center">
-    Allam Architecture For new Angular < 12 Projects
+    Allam Architecture For new Angular +12 Projects
     <br />
     <a href="https://github.com/Cenlins/Allam-Architecture"><strong>Explore the docs »</strong></a>
     <br />
