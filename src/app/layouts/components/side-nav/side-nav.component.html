@@ -1,0 +1,61 @@
+<mat-sidenav-container>
+    <mat-sidenav
+      #sidenav
+      [opened]="isOpened"
+      [position]="mobileQuery.matches ? 'start' : 'start'"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      (openedChange)="openChanged($event)"
+      >
+      <!-- [fixedInViewport]="mobileQuery.matches" -->
+      <!-- [mode]="mobileQuery.matches ? 'over' : 'side'" -->
+        <!-- <div class="sidebarToggle2" (click)="sidenav.toggle()"></div> -->
+        <a [routerLink]="[ '/dashboard' ]">
+          <img src="assets/images/SSA_Logo-01.svg" alt="" class="m-auto w-3/4 py-3">
+        </a>
+        <!-- <div class="productTitle text-right pb-5">{{productTitle}}</div> -->
+      
+  
+        <mat-nav-list
+          class="p-0"
+          style="padding-bottom: 12px !important"
+        >
+          <div class="text-center">
+            <ng-container *ngFor="let listItem of menuLinks">
+              <!-- *ngIf="!listItem?.hidden" -->
+              <app-nav-item
+                [link]="listItem?.link!"
+                [label]="listItem?.label!"
+                [icon]="listItem?.icon!"
+                [children]="listItem?.children!"
+                [materialIcon]="listItem?.materialIcon!"
+                [queries]="listItem?.queryParams!"
+              ></app-nav-item>
+  
+            </ng-container>
+  
+          </div>
+        </mat-nav-list>
+
+        <img src="assets/images/org-logo.png" alt="" class="absolute bottom-10 left-1/3 ng-tns-c38-0 w-1/3">
+
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+      <div class="sidebarToggle block" (click)="sidenav.toggle(); isOpened = !isOpened" [ngClass]="{'opened': isOpened}">
+        <!-- <svg class="ham ham2 active" viewBox="0 0 150 150" width="50" onclick="this.classList.toggle('active')"> -->
+        <svg class="ham ham2 active" viewBox="0 0 150 150" width="50" [ngClass]="{'active': isOpened}">
+          <path
+                class="line top"
+                d="m 70,33 h -40 c -6.5909,0 -7.763966,-4.501509 -7.763966,-7.511428 0,-4.721448 3.376452,-9.583771 13.876919,-9.583771 14.786182,0 11.409257,14.896182 9.596449,21.970818 -1.812808,7.074636 -15.709402,12.124381 -15.709402,12.124381" />
+          <path
+                class="line middle"
+                d="m 30,50 h 40" />
+          <path
+                class="line bottom"
+                d="m 70,67 h -40 c -6.5909,0 -7.763966,4.501509 -7.763966,7.511428 0,4.721448 3.376452,9.583771 13.876919,9.583771 14.786182,0 11.409257,-14.896182 9.596449,-21.970818 -1.812808,-7.074636 -15.709402,-12.124381 -15.709402,-12.124381" />
+        </svg>
+      </div>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+  
