@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:production:deploy": "npm version minor && node ./update-version.js && node --max_old_space_size=8096 ./node_modules/@angular/cli/bin/ng build --prod && gulp production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -32,6 +33,8 @@
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/typography": "^0.4.1",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0",
     "ngxs-reset-plugin": "^1.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
