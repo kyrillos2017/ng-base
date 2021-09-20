@@ -35,6 +35,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "gulp": "^4.0.2",
     "gulp-zip": "^5.1.0",
+    "ngx-webstorage-service": "^4.1.0",
     "ngxs-reset-plugin": "^1.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
