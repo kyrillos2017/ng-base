@@ -6,6 +6,7 @@ export interface ApiResponse<T = any> {
   errors: string[];
 }
 
+
 export interface PaginationModel<T = any> {
   pageNumber: number;
   pageSize: number;

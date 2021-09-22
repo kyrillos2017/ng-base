@@ -33,6 +33,7 @@
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/typography": "^0.4.1",
+    "angular-oauth2-oidc": "^12.1.0",
     "gulp": "^4.0.2",
     "gulp-zip": "^5.1.0",
     "ngx-webstorage-service": "^4.1.0",

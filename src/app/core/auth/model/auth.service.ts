@@ -7,15 +7,15 @@ import { SSAConfigInst } from 'src/app/config/app.config';
 import { ApiResponse } from '@core/http/apis.model';
 import { Store } from '@ngxs/store';
 import { HttpService } from '@core/http/http/http.service';
-import { GetMyOrganization } from '@core/modules/organization/state/organization.actions';
+// import { GetMyOrganization } from '@core/modules/organization/state/organization.actions';
 import { SetUser } from '@core/modules/user/state/user.actions';
 import { StorageService } from '@core/services/storage/storage.service';
 import { Location } from '@angular/common';
 import { NotifyAllOriginContextsToLogin } from '../state/auth.actions';
 import { SnackBarsService } from '@shared/modules/snackbars/snackbars.service';
 import { OauthEventsTypes, OauthFailsMessages } from '../config/oauth-events.config';
-import { LoadSystemRoles, SetGrantedRoles } from '@core/modules/authorization/state/authorization.actions';
-import { loggedInUserModel } from '@core/modules/user/model/user.model';
+// import { LoadSystemRoles, SetGrantedRoles } from '@core/modules/authorization/state/authorization.actions';
+// import { loggedInUserModel } from '@core/modules/user/model/user.model';
 
 
 @Injectable({
@@ -78,11 +78,11 @@ export class AuthService {
      * Get user info then fire SetUser Action which will save user data to storage
      */
     public setupUserInfo() {
-        return this._http.fetch(`Auth/GetMyUserInfo`).pipe(
-            tap(({ result: user }: ApiResponse<loggedInUserModel>) => {
-                this._store.dispatch(new SetUser(user))
-                this._store.dispatch(new SetGrantedRoles(user.permissions));
-            }))
+        // return this._http.fetch(`Auth/GetMyUserInfo`).pipe(
+        //     tap(({ result: user }: ApiResponse<loggedInUserModel>) => {
+        //         this._store.dispatch(new SetUser(user))
+        //         this._store.dispatch(new SetGrantedRoles(user.permissions));
+        //     }))
     }
 
 
@@ -149,15 +149,15 @@ export class AuthService {
 
 
         /**
-         * On new Session initializing 
+         * On new Session initializing
          */
         this._oauthService.events
             .pipe(filter((e: OAuthEvent) => OauthEventsTypes.tokenReceived == e.type))
             .subscribe(e => {
                 forkJoin([
                     this.setupUserInfo(),
-                    this._store.dispatch(new GetMyOrganization),
-                    this._store.dispatch(new LoadSystemRoles)
+                    // this._store.dispatch(new GetMyOrganization),
+                    // this._store.dispatch(new LoadSystemRoles)
                 ]).subscribe(() => {
                     console.info('[Auth Service] Setup all the needed information before user start his session');
                     this._store.dispatch(new NotifyAllOriginContextsToLogin)
@@ -165,7 +165,7 @@ export class AuthService {
                     console.error(OauthFailsMessages.failToAuthenticate, error);
                     this._router.navigate([SSAConfigInst.ROUTES_CONFIG.login]);
                     this._snacks.openFailureSnackbar({
-                        message: OauthFailsMessages.failToAuthenticate, 
+                        message: OauthFailsMessages.failToAuthenticate,
                         duration: 8
                     })
                 });
@@ -175,7 +175,7 @@ export class AuthService {
         .subscribe(error => {
             console.error(OauthFailsMessages.failToCommunicate, error)
             this._snacks.openFailureSnackbar({
-                message: OauthFailsMessages.failToCommunicate, 
+                message: OauthFailsMessages.failToCommunicate,
                 duration: 8
             })
         })

@@ -1,4 +1,4 @@
-import { authModuleConfig } from './auth/config/oauth-module.config';
+// import { authModuleConfig } from './auth/config/oauth-module.config';
 import { AuthGuard } from './auth/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule, ModuleWithProviders } from "@angular/core";
