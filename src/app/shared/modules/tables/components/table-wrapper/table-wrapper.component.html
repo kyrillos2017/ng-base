@@ -8,9 +8,9 @@
 
             <!-- With Sorting -->
             <ng-container *ngIf="getColumn(column)?.sort; else columnWithoutSort">
-                <mat-header-cell 
-                mat-sort-header 
-                [start]="getColumn(column)?.sort.sortType == 1 ? 'asc': 'desc'" 
+                <mat-header-cell
+                mat-sort-header
+                [start]="getColumn(column)?.sort.sortType === 1 ? 'asc': 'desc'"
                 [disableClear]="getColumn(column)?.sort.disableClear || false"
                 *matHeaderCellDef
                     [ngClass]="'flex-' + getColumn(column).view?.width + ' justify-' + getColumn(column).view.headCell?.align">

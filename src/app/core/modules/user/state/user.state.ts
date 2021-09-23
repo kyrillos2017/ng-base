@@ -20,7 +20,7 @@ export class UserStateModel {
       profileRoles: [],
       userPermissions: []
     }
-    this.myProfile = null
+    this.myProfile = new ProfileModel()
   }
 }
 
@@ -68,7 +68,7 @@ export class UserState {
     return this._userService.GetMyUserInfo().pipe(
       tap((user: loggedInUserModel) => dispatch([
         new SetUser({ ...user, profileRoles: [SystemRoles.Master] }),
-        new SetGrantedRoles(user.permissions)]
+        new SetGrantedRoles(user.userPermissions)]
       ))
     )
   }

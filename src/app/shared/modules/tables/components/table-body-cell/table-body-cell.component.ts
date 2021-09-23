@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TableActionModel, TableColumnModel } from '../../model/tables.model';

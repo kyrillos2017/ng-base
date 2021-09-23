@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit, Input, ChangeDetectionStrategy, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { SSAConfigInst } from 'src/app/config/app.config';

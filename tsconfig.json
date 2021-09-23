@@ -14,16 +14,20 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ],
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "paths": {
       "@core/*": ["src/app/core/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@modules/*": ["src/app/feature-modules/*"],
+      "@modules/*": ["src/app/core/modules/*"],
       "@layouts/*": ["src/app/layouts/*"],
       "@helpers/": ["src/app/shared/helpers/*"],
       "@environments/*": ["src/environments/*"],
@@ -34,6 +38,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+
   }
 }

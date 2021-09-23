@@ -15,6 +15,9 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
+import { SharedModule } from '@shared/shared.module';
+import { AuthModule } from '@core/auth/auth.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
     // Core & layout installation
     CoreModule.forRoot(),
     LayoutModule,
+    SharedModule,
+    OAuthModule.forRoot(),
     // State core modules and plugins
     NgxsSelectSnapshotModule.forRoot(),
     NgxsModule.forRoot([

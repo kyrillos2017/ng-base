@@ -23,7 +23,7 @@ import { ActivateSpinner, DeactivateSpinner } from '@core/modules/spinner/state/
 export class AuthStateModel {
   logoutChannel: BroadcastChannel;
   loginChannel: BroadcastChannel;
-  returnUrl?: string;
+  returnUrl?: string | null;
   lastDispatchedActions: object[];
   tokenRefreshInProgress: boolean
 }

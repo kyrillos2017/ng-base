@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { SnackBarsService } from '@shared/modules/snackbars/snackbars.service';
 import { ENTER } from '@angular/cdk/keycodes';
@@ -32,22 +33,22 @@ export class SearchInputComponent implements OnInit {
 
   public onSearchChange(term) {
 
-    // if (term.length && term.trimLeft() == '') 
+    // if (term.length && term.trimLeft() == '')
     // return this._snacks.openWarningSnackbar({message: 'White Spaces only not allowed', duration: 5});
 
-    /* // To check if there is trailing white spaces at first and show error message based on it 
-     if (term.length && term.trimLeft().length != term.length) 
+    /* // To check if there is trailing white spaces at first and show error message based on it
+     if (term.length && term.trimLeft().length != term.length)
     return this._snacks.openWarningSnackbar({message: 'Trailing White Space not allowed at first', duration: 5});
     */
 
-    // Incase of white spaces only 
+    // Incase of white spaces only
     if (term.length && !term.trim().length) return;
     // return this._snacks.openWarningSnackbar({ message: 'White spaces only not allowed in search', duration: 5 });
 
 
 
     // Don't emit event incase of no value
-    // if (!term.length || term.trim().length == 0) return 
+    // if (!term.length || term.trim().length == 0) return
 
 
     else {
@@ -61,8 +62,8 @@ export class SearchInputComponent implements OnInit {
   }
 
   /**
-   * Trigger searchChange method Instead of triggering change event on input because this 
-   * solution cause Error I can't resolve and this one is better on performance side 
+   * Trigger searchChange method Instead of triggering change event on input because this
+   * solution cause Error I can't resolve and this one is better on performance side
    */
   public triggerChangeEvent() {
     this.onSearchChange(this.searchInputEl.nativeElement.value);

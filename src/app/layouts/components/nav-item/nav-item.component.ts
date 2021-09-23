@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit, Input } from '@angular/core';
 import {
   trigger,
@@ -47,8 +48,7 @@ export class NavItemComponent implements OnInit {
 
   constructor(private _router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public ShowChildren(){
     this.collapsed = !this.collapsed

@@ -14,7 +14,7 @@ export class ValidationErrorComponent implements OnInit {
     @Input() businessName: string | null = null; // Used instead control name incase of control name is not readable
     @Input() customMessage: string | null = null; // Used instead of default error message incase you wanna overwrite it on specific scenario
     @Input() customValidatorsErrorMessages: { [key: string]: string } = {}; // Bunch of error messages that not provide by component
-        
+
 
 
     ngOnInit() {
@@ -23,16 +23,17 @@ export class ValidationErrorComponent implements OnInit {
     }
 
     /**
-     * 
+     *
      * @param errors -> Control errors which returned by angular after running specific validation rules over it
      */
-    getErrorMessage(errors: ValidationErrors = {}): string {
+    getErrorMessage(errors: ValidationErrors | null = {}): string {
+      if(errors){
         const keys = Object.keys(errors); // -> keys of errors
         let conditionValue = null; // -> the extra input which will help into outputting more descriptive message
-        
+
         // Predefined Error messages plus messages passed by user
         const totalValidationErrorMessages = { ...validationErrorMessages, ...this.customValidatorsErrorMessages };
-        
+
 
 
         // Setting condition value for validation message which required an extra input
@@ -65,10 +66,13 @@ export class ValidationErrorComponent implements OnInit {
                 conditionValue = null;
         }
 
-        // Error Message is just a string 
+        // Error Message is just a string
         if (typeof (totalValidationErrorMessages[keys[0]]) == "string") return totalValidationErrorMessages[keys[0]];
         // Error Message is a function that take inputs and return string message
         else return totalValidationErrorMessages[keys[0]](this.businessName, conditionValue);
+      } else {
+        return ''
+      }
     }
 
 
@@ -76,7 +80,7 @@ export class ValidationErrorComponent implements OnInit {
      * Search for the control name inside its parent controls and return it
      */
     private _getControlName(): string | null {
-        let controlName = null;
+        let controlName: string | null = null;
         const parent = this.control.parent;
 
         if (parent instanceof FormGroup) {
